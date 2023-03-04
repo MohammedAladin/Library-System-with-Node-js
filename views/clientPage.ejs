@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ChatRoom</title>
+</head>
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td,
+	th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+	
+</style>
+
+<body>
+	<h1>All Books</h1>
+	<table>
+		<tr>
+			<th>Book Name</th>
+            <th>Book Author</th>
+            <th>Book Quantity</th>
+            <th>Book Price</th>
+            <th>Book Availability</th>
+            <th>buy</th>
+		</tr>
+		<% data.forEach(element=> { %>
+			<tr>
+                <td>
+                    <%= element.name %>
+                </td>
+                <td>
+                    <%= element.author %>
+                </td>
+                <td>
+                    <%= element.quantity %>
+                </td>
+                <td>
+                    <%= element.bookPrice %>
+                </td>
+                <td>
+                    <%= element.isAvaliable %>
+                </td>
+                <td>
+                    <form action="/books/buy" method="post">
+                        <input type="text" style="display: none;" 
+                               name="name" 
+                               value="<%= element.name %>">
+                        <button type="submit">Buy</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+
+	</table>
+	
+</body>
+
+</html>
