@@ -16,10 +16,6 @@ module.exports = async (req, res, next) => {
     if(!validPass) return res.status(400).send("invalid email or password");
 
     console.log(userEmail.isAdmin)
-
-    
-
-    
     next();
 };
 

@@ -1,7 +1,13 @@
 const Book = require("../Models/bookModel")
 
-const getAllBooks = async (req,res)=>{ //here we had to add async and await
-    res.render("clientPage", {
+const adminGetAllBooks = async (req,res)=>{ //here we had to add async and await
+    return res.render("adminPage", {
+        data: await Book.find()
+    })
+}
+
+const clientGetAllBooks = async (req,res)=>{ //here we had to add async and await
+    return res.render("clientPage", {
         data: await Book.find()
     })
 }
@@ -11,10 +17,11 @@ const addBook = async (req,res)=>{
     let book = await Book.findOneAndUpdate({name:req.body.name},{$inc:{quantity:1}})
     if(book){
         console.log("book already exists")
-        return res.render("adminPage", {
+        res.render("adminPage", {
             data:await Book.find()
         })
     }
+    else{
     book = new Book({
         name:req.body.name,
         author:req.body.author,
@@ -27,7 +34,7 @@ const addBook = async (req,res)=>{
     console.log("book added")
     res.render("adminPage", {
         data: await Book.find()
-    })
+    })}
 };
 const getBookByName = async (req,res)=>{
 
@@ -79,7 +86,8 @@ const buyBook = async (req,res)=>{
 
 module.exports = {
     addBook,
-    getAllBooks,
+    adminGetAllBooks,
+    clientGetAllBooks,
     getBookByName,
     deleteBook,
     buyBook

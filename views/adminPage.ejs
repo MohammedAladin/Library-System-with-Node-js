@@ -2,29 +2,158 @@
 <html>
 
 <head>
-	<title>ChatRoom</title>
+	<link href="https://fonts.googleapis.com/css2?family=Cuprum&display=swap" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Beau Rivage' rel='stylesheet'>
+	<title>Admin Page</title>
 </head>
 <style>
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
+	*{
+		margin: 0%;
+		background-color: rgb(26, 188, 156);
+		font-family: 'Cuprum', sans-serif;
 	}
+    body{
+        min-height: 100vh;
+        display: flex;
+  flex-direction: column;
+    }
+
+	#top{
+		background-image: url("./photo-1481627834876-b7833e8f5570.jpeg");
+		padding-top: 10px;
+		height: 100px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 70px ;
+		font-family: 'Beau Rivage';
+		-webkit-text-stroke: 0.2px rgb(0, 0, 0);
+	}
+
+	table {
+		width: 95%; 
+		
+		margin: auto;
+		box-shadow:2px 2px 6px 5px #020201;
+		margin-top: 18px;
+		margin-bottom: 25px;
+		border-collapse: collapse;
+  		border-radius: 1em;
+  		overflow: hidden;
+		
+	}
+	table:hover{
+		box-shadow:10px 10px 30px rgb(56, 55, 55);
+	}
+
+
+	th{
+		color: #000000;
+		font-size: 27px;
+		-webkit-text-stroke: 0.12px rgba(10, 10, 10, 0.5);;
+
+	}
+
 
 	td,
 	th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
+		
+		text-align: center;
+		padding: 1em;
+ 		 border-bottom: 2px solid rgb(0, 0, 0); 
 	}
 
-	tr:nth-child(even) {
-		background-color: #dddddd;
-	}
 	
+	h1,h2{
+		font-size: 50px ;
+		-webkit-text-stroke: 1.5px rgb(0, 0, 0);
+		
+		margin-bottom: -0.3px;
+	}
+	h1{
+		margin-top: 30px;
+		margin-left: 100px;
+	}
+	h2{
+		
+		margin-top: 35px;
+		text-align: center;
+		
+	}
+
+	button{
+	  color: #000000;
+	  font: 20px bold;
+      border-radius: 12px;
+      padding: 10px;
+      margin-top: 5px;
+	  width: 80px;
+	}
+
+	button:hover{
+		border: 2px solid black;
+		color:black;
+		cursor:grab;
+	}
+	#myformDiv{
+		margin: auto;
+	}
+	#form1{
+		
+		background-color: rgb(228, 232, 232,0.6);
+		border-radius: 20px;
+		width: fit-content;
+		padding: 20px;
+		
+		margin-bottom: 50px;
+		
+	}
+
+
+	.input{
+		display: flex;
+		flex-direction: column;
+		border: 2px solid black;
+		padding: 12px 20px;
+ 		margin-top: 8px;
+  		box-sizing: border-box;
+		border-radius: 15px;
+		width:300px;
+		font-size: 18px;
+	}
+
+
+	#add{
+		margin-left:110px ;
+		margin-top: 7px;
+	}
+
+	.myFooter{
+		height: 50px;
+    	background-color:rgba(10, 10, 10, 0.4);
+		 padding-top: 15px; 
+		 margin-top: auto;
+		
+	}
+
+
+	.myFooter h3,p{
+		text-align: center;
+		font-size: 16px;
+		color: rgb(255, 255, 255,0.9);  
+	}
+
+
+	#heart{
+		color: crimson;
+	}
+
+
 </style>
 
 <body>
+	<h4 id="top">Library System</h4>
+
+
 	<h1>All Books</h1>
 	<table>
 		<tr>
@@ -53,7 +182,7 @@
                     <%= element.isAvaliable %>
                 </td>
                 <td>
-                    <form action="/books/delete" method="post">
+                    <form action="/admin/delete" method="post">
                         <input type="text" style="display: none;" 
                                name="name" 
                                value="<%= element.name %>">
@@ -65,14 +194,19 @@
 
 	</table>
 	<h2>Add New Book</h2>
-	<form action="/books" method="POST">
-		<input type="text" placeholder="Book Name" name="name">
-		<input type="text" placeholder="Book Author" name="author">
-		<input type="text" placeholder="Book Pages" name="bookPages">
-		<input type="text" placeholder="Book Price" name="bookPrice">
-		<button type="submit">Add</button>
+<div id="myformDiv">
+	<form id="form1" action="/admin/add" method="POST">
+		<input class="input" type="text" placeholder="Book Name" name="name">
+		<input class="input" type="text" placeholder="Book Author" name="author">
+		<input class="input" type="text" placeholder="Book Pages" name="bookPages">
+		<input class="input" type="text" placeholder="Book Price" name="bookPrice">
+		<button id="add" type="submit">Add</button>
 	</form>
-
+</div>
+	<footer class="myFooter">
+		<p style="background-color: rgba(10, 10, 10, 0);">Copyright © 2021. All Rights Reserved.</p>
+		<h3 style="background-color: rgba(10, 10, 10, 0);">Made with <span style="background-color: rgba(10, 10, 10, 0)" id="heart">&#10084;</span> by Mohamed Alaa</h3>
+	</footer>
 
 
 
