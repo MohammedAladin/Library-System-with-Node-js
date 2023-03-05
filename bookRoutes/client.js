@@ -14,6 +14,8 @@ router.get("/",async (req,res)=>{
   res.render("clientPage",{
     data: await Book.find()
   })    
+
+  
 })
 
 
